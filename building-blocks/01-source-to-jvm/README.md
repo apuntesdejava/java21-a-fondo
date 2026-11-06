@@ -18,7 +18,6 @@ Al terminar este video deberíamos poder explicar:
 
 ## Material
 
-- [Guion](script/guion.md)
 - [Experimentos](experiments/README.md)
 - [Slides](slides/slides.md)
 - [Cheat sheet](cheat-sheet/cheat-sheet.md)
