@@ -19,10 +19,8 @@ Al terminar este episodio deberíamos poder:
 
 ## Material
 
-- [Guion](script/guion.md)
 - [Experimentos](experiments/README.md)
 - [Slides](slides/slides.md)
 - [Cheat sheet](cheat-sheet/cheat-sheet.md)
 - [Quiz](quiz/questions.md)
-- [Shorts / TikTok](shorts/README.md)
 - [Ejemplos](examples/)

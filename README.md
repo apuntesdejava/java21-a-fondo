@@ -1,19 +1,30 @@
-# Java 21 a fondo
+# Java 21 a Fondo
 
 **Entender antes que memorizar**
 
-Repositorio de estudio y producción de la serie **Java 21 a fondo**, orientada a dos objetivos:
+Repositorio público de estudio y experimentación de la serie **Java 21 a Fondo**, orientada a dos objetivos:
 
 1. Preparar la certificación Oracle Certified Professional Java SE 21 Developer.
 2. Construir material técnico original, profundo y reutilizable sobre Java 21.
 
 La certificación marca el temario; la meta es comprender el lenguaje.
 
+## Qué encontrarás aquí
+
+- ejemplos de código;
+- experimentos;
+- ejercicios y preguntas;
+- cheat sheets;
+- diapositivas y material visual reutilizable;
+- referencias técnicas asociadas a cada episodio.
+
+El material interno de investigación, guiones y producción se mantiene separado en el Studio.
+
 ## Estructura
 
 - `building-blocks/`: primera subserie, basada en los fundamentos del lenguaje.
-- Cada video incluye guion, ejemplos, experimentos, diapositivas, cheat sheet y preguntas.
-- `presentation/`: criterios comunes para las diapositivas HTML.
+- Cada episodio reúne únicamente material técnico útil para estudiar, consultar y experimentar.
+- Las diapositivas se versionan junto con el material técnico del episodio.
 
 ## Primera subserie
 
