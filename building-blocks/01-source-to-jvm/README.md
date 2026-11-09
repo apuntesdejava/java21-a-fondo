@@ -16,6 +16,12 @@ Al terminar este video deberíamos poder explicar:
 - qué es **source-file mode**;
 - qué problema resuelve el classpath.
 
+## Video
+
+Este material acompaña al episodio **01 — Del código fuente a la JVM** de la serie *Java 21 a Fondo*.
+
+▶️ [Ver el episodio en YouTube](https://youtu.be/IkVNQxjHnWM)
+
 ## Material
 
 - [Experimentos](experiments/README.md)
