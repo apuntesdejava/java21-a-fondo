@@ -1,0 +1,90 @@
+name: Validate public content
+
+on:
+  pull_request:
+    branches:
+      - develop
+      - main
+
+jobs:
+  validate-content:
+    name: Validate public repository structure
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Ensure Studio-only content is not public
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          forbidden_dirs=(
+            "script"
+            "scripts"
+            "shorts"
+            "research"
+            "source-analysis"
+            "recording-notes"
+            "publishing"
+          )
+
+          violations=0
+
+          for dir in "${forbidden_dirs[@]}"; do
+            while IFS= read -r path; do
+              if [[ -n "$path" ]]; then
+                echo "::error::Studio-only directory found in public repository: $path"
+                violations=1
+              fi
+            done < <(find . -type d -name "$dir" -not -path "./.git/*")
+          done
+
+          if [[ "$violations" -ne 0 ]]; then
+            exit 1
+          fi
+
+      - name: Validate episode structure
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          violations=0
+
+          while IFS= read -r episode; do
+            echo "Validating $episode"
+
+            required_paths=(
+              "README.md"
+              "examples"
+              "experiments/README.md"
+              "slides/slides.md"
+              "cheat-sheet/cheat-sheet.md"
+              "quiz/questions.md"
+            )
+
+            for required in "${required_paths[@]}"; do
+              path="$episode/$required"
+
+              if [[ ! -e "$path" ]]; then
+                echo "::error file=$episode::Missing required content: $path"
+                violations=1
+              fi
+            done
+          done < <(
+            find building-blocks \
+              -mindepth 1 \
+              -maxdepth 1 \
+              -type d \
+              -name '[0-9][0-9]-*' \
+              | sort
+          )
+
+          if [[ "$violations" -ne 0 ]]; then
+            exit 1
+          fi
+
+      - name: Validation summary
+        run: |
+          echo "Public content structure is valid."
