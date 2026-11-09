@@ -35,7 +35,12 @@ cd ../03-comments
 javac Comments.java
 ```
 
-Después descomentar el bloque marcado como inválido y observar el error.
+El archivo deliberadamente **NO COMPILA**.
+
+El comentario de bloque contiene otro `/* ... */`. Los comentarios de bloque no se anidan: el primer `*/` cierra el comentario exterior y el resto del texto queda expuesto como código Java inválido.
+
+Para experimentar, elimina el comentario interno y comprueba que el archivo vuelve a compilar.
+
 
 ## 4. Dos tipos top-level
 
