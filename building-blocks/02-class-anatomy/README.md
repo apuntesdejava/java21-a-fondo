@@ -17,6 +17,12 @@ Al terminar este episodio deberíamos poder:
 - resolver imports explícitos, wildcards, `java.lang`, mismo package y conflictos de nombres;
 - reconocer qué reglas son relevantes para OCP y cuáles son convenciones del mundo real.
 
+## Video
+
+Este material acompaña al episodio **02 — Anatomía de una clase Java** de la serie *Java 21 a Fondo*.
+
+▶️ [Ver el episodio en YouTube](https://youtu.be/dQbYMbKBAww)
+
 ## Material
 
 - [Experimentos](experiments/README.md)
