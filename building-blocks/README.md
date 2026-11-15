@@ -6,7 +6,7 @@ Primera subserie de **Java 21 a fondo**.
 
 1. [Del código fuente a la JVM](01-source-to-jvm/README.md)
 2. [Anatomía de una clase Java](02-class-anatomy/README.md)
-3. [Objetos, referencias y construcción](03-objects-references-construction/README.md)
+3. Objetos, referencias y construcción
 4. Tipos y valores en Java
 5. Variables, inferencia, scope y ciclo de vida
 
