@@ -186,19 +186,42 @@ Referencia: JLS 8.6.
 
 ---
 
-## Orden básico de una clase simple
+## Proceso de construcción
+
+Modelo conceptual:
 
 ```mermaid
 flowchart TD
-    A["Valores por defecto"] --> B["Field initializers / instance initializers"]
-    B --> C["Constructor"]
+    A["Reserva de espacio"] --> B["Valores por defecto"]
+    B --> C["Comienza el procesamiento del constructor"]
+    C --> D["Construcción de la superclase"]
+    D --> E["Field / instance initializers de la clase actual"]
+    E --> F["Resto del cuerpo del constructor"]
+    F --> G["Referencia resultante"]
 ```
 
-Los field initializers y los instance initializer blocks se siguen en orden textual.
+Los field initializers y los instance initializer blocks de la clase actual se ejecutan en orden textual.
 
-Este modelo todavía no incluye herencia.
+Ese orden observable ocurre antes del resto del cuerpo del constructor de la clase actual.
 
-Referencia: JLS 12.5.
+No interpretar:
+
+```text
+initializers
+    ↓
+constructor
+```
+
+como si el constructor recién comenzara después de los initializers.
+
+La construcción de la superclase ocurre antes de los initializers de la clase actual.
+
+La cadena completa con `this(...)`, `super(...)` y constructor chaining se estudiará más adelante.
+
+Referencias:
+
+- JLS 12.5.
+- JLS 15.9.4.
 
 ---
 
@@ -221,7 +244,9 @@ Antes de calcular una salida, comprobar que existe un constructor aplicable y qu
 - `void Robot()` es método, no constructor;
 - el constructor por defecto solo aparece si no se declara ningún constructor;
 - fields de instancia reciben valores iniciales;
-- field e instance initializers siguen orden textual;
+- field e instance initializers de la clase actual siguen orden textual;
+- esos initializers se ejecutan antes del resto del cuerpo de su constructor;
+- la construcción de la superclase ocurre antes de los initializers de la clase actual;
 - primero compile-time, después runtime.
 
 ---
@@ -235,3 +260,4 @@ Antes de calcular una salida, comprobar que existe un constructor aplicable y qu
 - [JLS 8.8.9 - Default Constructor](https://docs.oracle.com/javase/specs/jls/se21/html/jls-8.html#jls-8.8.9)
 - [JLS 12.5 - Creation of New Class Instances](https://docs.oracle.com/javase/specs/jls/se21/html/jls-12.html#jls-12.5)
 - [JLS 15.9 - Class Instance Creation Expressions](https://docs.oracle.com/javase/specs/jls/se21/html/jls-15.html#jls-15.9)
+- [JLS 15.9.4 - Run-Time Evaluation of Class Instance Creation Expressions](https://docs.oracle.com/javase/specs/jls/se21/html/jls-15.html#jls-15.9.4)

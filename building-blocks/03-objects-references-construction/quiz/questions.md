@@ -120,7 +120,7 @@ Los fields de instancia reciben valores iniciales por defecto.
 
 ---
 
-## 6. Orden de inicialización
+## 6. Orden observable durante la construcción
 
 ```java
 class Robot {
@@ -132,7 +132,7 @@ class Robot {
     }
 
     Robot() {
-        trace("constructor");
+        trace("constructor body");
     }
 
     static String trace(String value) {
@@ -145,31 +145,46 @@ class Robot {
 ¿Cuál es la salida al ejecutar `new Robot()`?
 
 A.
+
 ```text
-constructor
+constructor body
 field 1
 initializer 1
 ```
 
 B.
+
 ```text
 field 1
 initializer 1
-constructor
+constructor body
 ```
 
 C.
+
 ```text
 initializer 1
 field 1
-constructor
+constructor body
 ```
 
 D. No compila.
 
 **Respuesta: B.**
 
-En el modelo simple estudiado aquí, field initializers e instance initializer blocks se siguen en orden textual antes del cuerpo del constructor.
+Los field initializers y los instance initializer blocks de la clase actual se ejecutan en orden textual antes del resto del cuerpo de su constructor.
+
+La línea:
+
+```text
+constructor body
+```
+
+representa una instrucción situada dentro del cuerpo del constructor.
+
+No significa que el constructor recién sea invocado después de los initializers.
+
+La construcción de la superclase forma parte del procesamiento previo a los initializers de la clase actual.
 
 ---
 
@@ -255,3 +270,20 @@ D. Todas las referencias almacenan exactamente la misma representación binaria 
 **Respuesta: B.**
 
 La JLS define valores de referencia. La representación física concreta pertenece a la implementación y no forma parte del modelo que necesitamos para razonar el lenguaje.
+
+---
+
+## 11. ¿Qué ocurre antes de los initializers de la clase actual?
+
+Durante la construcción de una instancia, ¿qué afirmación es correcta?
+
+A. Los initializers de la clase actual siempre se ejecutan antes de cualquier procesamiento del constructor.  
+B. La construcción de la superclase se procesa antes de los initializers de la clase actual.  
+C. El cuerpo completo del constructor termina antes de ejecutar los initializers.  
+D. Los initializers solo se ejecutan si el constructor los invoca explícitamente.
+
+**Respuesta: B.**
+
+El procesamiento de la construcción de la superclase ocurre antes de los field initializers e instance initializer blocks de la clase actual.
+
+La cadena completa con `this(...)`, `super(...)` y constructor chaining se estudiará más adelante.
