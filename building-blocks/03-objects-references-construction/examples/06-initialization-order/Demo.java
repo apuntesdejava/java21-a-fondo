@@ -13,7 +13,7 @@ class Robot {
     }
 
     Robot() {
-        trace("constructor");
+        trace("constructor body");
     }
 
     static String trace(String message) {

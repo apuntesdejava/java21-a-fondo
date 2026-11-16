@@ -145,7 +145,7 @@ Sin embargo el código intenta:
 new Coffee();
 ```
 
-Para repararlo, probar una de estas dos variantes:
+Para repararlo, probar una de estas dos variantes.
 
 ### Variante A
 
@@ -170,7 +170,7 @@ Referencia:
 
 ---
 
-## 6. Orden básico de inicialización
+## 6. Orden de inicialización durante la construcción
 
 ```bash
 cd ../06-initialization-order
@@ -185,10 +185,45 @@ field 1
 initializer 1
 field 2
 initializer 2
-constructor
+constructor body
 ```
 
-El experimento permite observar que field initializers e instance initializer blocks se procesan siguiendo su orden textual antes del cuerpo del constructor, dentro del modelo simple estudiado en este episodio.
+La última línea se llama deliberadamente:
+
+```text
+constructor body
+```
+
+porque representa una instrucción situada dentro del cuerpo del constructor.
+
+No significa que el constructor recién sea invocado en ese momento.
+
+El experimento permite observar que los field initializers y los instance initializer blocks de la clase actual se ejecutan en el orden textual en que aparecen y antes del resto del cuerpo de su constructor.
+
+El modelo conceptual que explica el experimento es:
+
+```text
+reserva de espacio
+        ↓
+valores por defecto
+        ↓
+comienza el procesamiento
+del constructor seleccionado
+        ↓
+construcción de la superclase
+        ↓
+field initializers e
+instance initializer blocks
+de la clase actual,
+en orden textual
+        ↓
+resto del cuerpo
+del constructor
+```
+
+La construcción de la superclase forma parte del proceso aunque este experimento no la instrumente directamente.
+
+La cadena completa con `this(...)`, `super(...)` y constructor chaining se estudiará más adelante.
 
 ### Modificación propuesta
 
@@ -202,10 +237,21 @@ con el primer instance initializer y volver a ejecutar.
 
 Predecir la salida antes de compilar.
 
-Referencia:
+La predicción debe concentrarse en el orden de:
+
+```text
+field initializers
++
+instance initializer blocks
+```
+
+no en interpretar la última línea como el momento de invocación del constructor.
+
+Referencias:
 
 - JLS 8.6
 - JLS 12.5
+- JLS 15.9.4
 
 ---
 

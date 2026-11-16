@@ -14,7 +14,9 @@ Al terminar este episodio deberíamos poder:
 - reconocer un constructor y diferenciarlo de un método;
 - entender cuándo existe un constructor por defecto;
 - identificar los valores iniciales de los fields de instancia;
-- seguir el orden básico de field initializers, instance initializer blocks y constructor;
+- seguir el orden de field initializers e instance initializer blocks dentro del proceso de construcción;
+- distinguir el comienzo del procesamiento del constructor del resto de su cuerpo;
+- reconocer que la construcción de la superclase ocurre antes de los initializers de la clase actual;
 - distinguir qué se resuelve en compile-time de qué sucede en runtime.
 
 ## Video
@@ -278,6 +280,8 @@ class Robot {
 }
 ```
 
+Los field initializers y los instance initializer blocks de la clase actual se ejecutan en el orden textual en que aparecen.
+
 Referencia oficial:
 
 - [JLS 8.6 - Instance Initializers](https://docs.oracle.com/javase/specs/jls/se21/html/jls-8.html#jls-8.6)
@@ -285,28 +289,84 @@ Referencia oficial:
 
 ---
 
-## 9. Orden básico de construcción
+## 9. Orden de construcción
 
-Para una clase simple como la utilizada en este episodio:
+Consideremos una clase instrumentada:
+
+```java
+class Robot {
+
+    String first = trace("field 1");
+
+    {
+        trace("initializer 1");
+    }
+
+    String second = trace("field 2");
+
+    {
+        trace("initializer 2");
+    }
+
+    Robot() {
+        trace("constructor body");
+    }
+
+    static String trace(String value) {
+        System.out.println(value);
+        return value;
+    }
+}
+```
+
+Al ejecutar:
+
+```java
+new Robot();
+```
+
+observamos:
+
+```text
+field 1
+initializer 1
+field 2
+initializer 2
+constructor body
+```
+
+Esta salida muestra el orden observable de esas instrucciones.
+
+No significa que el constructor recién sea invocado después de los initializers.
+
+El modelo conceptual es:
 
 ```mermaid
 flowchart TD
-    A["Valores por defecto"] --> B["field initializer 1"]
-    B --> C["instance initializer 1"]
-    C --> D["field initializer 2"]
-    D --> E["instance initializer 2"]
-    E --> F["constructor"]
+    A["Reserva de espacio"] --> B["Valores por defecto"]
+    B --> C["Comienza el procesamiento del constructor"]
+    C --> D["Construcción de la superclase"]
+    D --> E["field initializer 1"]
+    E --> F["instance initializer 1"]
+    F --> G["field initializer 2"]
+    G --> H["instance initializer 2"]
+    H --> I["Resto del cuerpo del constructor"]
 ```
 
-Los field initializers y los instance initializer blocks se siguen en el orden correspondiente en que aparecen.
+Por tanto:
 
-Este es deliberadamente el modelo básico de una clase simple.
+- los instance fields reciben primero sus valores por defecto;
+- comienza el procesamiento del constructor seleccionado;
+- se procesa la construcción de la superclase;
+- los field initializers e instance initializer blocks de la clase actual se ejecutan en orden textual;
+- después se ejecuta el resto del cuerpo del constructor de la clase actual.
 
-Cuando estudiemos herencia, `super()`, `this()` y constructor chaining, ampliaremos este modelo.
+En este episodio reconocemos que la construcción de la superclase forma parte del proceso, pero no desarrollamos todavía `this(...)`, `super(...)` ni constructor chaining.
 
 Referencia oficial:
 
 - [JLS 12.5 - Creation of New Class Instances](https://docs.oracle.com/javase/specs/jls/se21/html/jls-12.html#jls-12.5)
+- [JLS 15.9.4 - Run-Time Evaluation of Class Instance Creation Expressions](https://docs.oracle.com/javase/specs/jls/se21/html/jls-15.html#jls-15.9.4)
 
 ---
 
@@ -328,12 +388,28 @@ El compilador debe determinar que la expresión es legal y que existe un constru
 
 ```mermaid
 flowchart TD
-    A["new Coffee()"] --> B["Nueva instancia"]
+    A["new Coffee()"] --> B["Reserva de espacio"]
     B --> C["Valores por defecto"]
-    C --> D["Field / instance initializers"]
-    D --> E["Constructor"]
-    E --> F["Referencia al objeto"]
-    F --> G["coffee"]
+    C --> D["Comienza el procesamiento del constructor"]
+    D --> E["Construcción de la superclase"]
+    E --> F["Initializers de la clase actual"]
+    F --> G["Resto del cuerpo del constructor"]
+    G --> H["Referencia resultante"]
+    H --> I["coffee"]
+```
+
+Una forma compacta de recordar las piezas es:
+
+```text
+clase
+  ↓
+expresión con new
+  ↓
+nueva instancia
+  ↓
+proceso de construcción
+  ↓
+referencia resultante
 ```
 
 ---
@@ -345,7 +421,9 @@ flowchart TD
 - un método con el nombre de la clase y return type sigue siendo un método;
 - el constructor por defecto solo aparece si la clase no declara constructores;
 - los fields de instancia reciben valores iniciales;
-- field initializers e instance initializer blocks deben seguirse en orden;
+- field initializers e instance initializer blocks de la clase actual siguen el orden textual;
+- su ejecución ocurre antes del resto del cuerpo del constructor de la clase actual;
+- la construcción de la superclase ocurre antes de los initializers de la clase actual;
 - antes de razonar sobre runtime, comprobar si el código compila.
 
 ---
