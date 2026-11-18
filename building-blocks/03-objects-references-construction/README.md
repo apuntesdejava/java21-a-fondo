@@ -6,7 +6,7 @@
 
 ## Objetivos
 
-Al terminar este episodio deberíamos poder:
+Al terminar esta sesión deberíamos poder:
 
 - distinguir una clase de una instancia creada en runtime;
 - separar objeto, variable de referencia y valor de referencia;

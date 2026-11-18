@@ -6,7 +6,7 @@
 
 ## Objetivos
 
-Al terminar este episodio deberíamos poder:
+Al terminar esta sesión deberíamos poder:
 
 - distinguir archivo fuente, unidad de compilación, tipo top-level y clase;
 - reconocer campos, métodos y otros elementos del cuerpo de una clase;
