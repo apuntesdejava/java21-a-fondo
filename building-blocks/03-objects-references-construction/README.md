@@ -1,4 +1,4 @@
-# Video 3 - Objetos, referencias y construcción
+# Sesión 03 - Objetos, referencias y construcción
 
 ## Pregunta guía
 
@@ -21,9 +21,9 @@ Al terminar este episodio deberíamos poder:
 
 ## Video
 
-Este material acompaña al episodio **03 - Objetos, referencias y construcción** de la serie *Java 21 a Fondo*.
+Este material acompaña a la sesión **03 - Objetos, referencias y construcción** de la serie *Java 21 a Fondo*.
 
-El enlace al video se agregará cuando el episodio sea publicado.
+▶️ [Ver el video en YouTube](https://youtu.be/-Y3zITX5eUU)
 
 ## Material
 
