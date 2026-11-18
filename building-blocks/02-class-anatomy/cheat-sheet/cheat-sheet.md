@@ -1,4 +1,4 @@
-# Cheat sheet — Anatomía de una clase Java
+# Cheat sheet - Sesión 02 - Anatomía de una clase Java
 
 ## Unidad de compilación ordinaria
 

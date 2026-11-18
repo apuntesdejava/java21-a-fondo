@@ -1,4 +1,4 @@
-# Experimentos — Video 1
+# Experimentos - Sesión 01 - Del código fuente a la JVM
 
 Ejecutar desde la carpeta `01-source-to-jvm`.
 

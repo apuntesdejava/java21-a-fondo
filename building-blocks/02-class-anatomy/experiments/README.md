@@ -1,4 +1,4 @@
-# Experimentos — Anatomía de una clase Java
+# Experimentos - Sesión 02 - Anatomía de una clase Java
 
 Ejecutar desde `02-class-anatomy/examples`.
 
