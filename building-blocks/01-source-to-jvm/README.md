@@ -1,4 +1,4 @@
-# Video 1 — Del código fuente a la JVM
+# Sesión 01 - Del código fuente a la JVM
 
 ## Pregunta guía
 
@@ -6,7 +6,7 @@
 
 ## Objetivos
 
-Al terminar este video deberíamos poder explicar:
+Al terminar esta sesión deberíamos poder explicar:
 
 - qué papel cumplen el JDK, `javac`, `java` y la JVM;
 - qué es bytecode y qué contiene un archivo `.class`;
@@ -18,9 +18,9 @@ Al terminar este video deberíamos poder explicar:
 
 ## Video
 
-Este material acompaña al episodio **01 — Del código fuente a la JVM** de la serie *Java 21 a Fondo*.
+Este material acompaña a la sesión **01 - Del código fuente a la JVM** de la serie *Java 21 a Fondo*.
 
-▶️ [Ver el episodio en YouTube](https://youtu.be/IkVNQxjHnWM)
+▶️ [Ver el video en YouTube](https://youtu.be/IkVNQxjHnWM)
 
 ## Material
 

@@ -1,4 +1,4 @@
-# Quiz — Video 1
+# Quiz - Sesión 01 - Del código fuente a la JVM
 
 ## 1
 

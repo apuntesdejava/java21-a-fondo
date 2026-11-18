@@ -10,4 +10,4 @@ Primera subserie de **Java 21 a fondo**.
 4. Tipos y valores en Java
 5. Variables, inferencia, scope y ciclo de vida
 
-El capítulo original sirve como fuente de estudio; la organización de esta subserie responde a coherencia pedagógica, no a una correspondencia capítulo = video.
+El capítulo original sirve como fuente de estudio; la organización de esta subserie responde a coherencia pedagógica, no a una correspondencia capítulo = sesión.
