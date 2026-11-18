@@ -1,4 +1,4 @@
-# Cheat sheet - Objetos, referencias y construcción
+# Cheat sheet - Sesión 03 - Objetos, referencias y construcción
 
 ## Clase vs objeto
 

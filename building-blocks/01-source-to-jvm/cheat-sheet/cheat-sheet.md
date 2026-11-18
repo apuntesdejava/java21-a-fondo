@@ -1,4 +1,4 @@
-# Cheat sheet — Del código fuente a la JVM
+# Cheat sheet - Sesión 01 - Del código fuente a la JVM
 
 ## Versiones
 

@@ -1,4 +1,4 @@
-# Experimentos - Objetos, referencias y construcción
+# Experimentos - Sesión 03 - Objetos, referencias y construcción
 
 Ejecutar desde `03-objects-references-construction/examples`.
 

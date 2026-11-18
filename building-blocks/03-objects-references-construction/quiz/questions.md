@@ -1,4 +1,4 @@
-# Quiz - Objetos, referencias y construcción
+# Quiz - Sesión 03 - Objetos, referencias y construcción
 
 ## 1. ¿Cuántos objetos se crean?
 

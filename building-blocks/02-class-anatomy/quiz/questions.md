@@ -1,4 +1,4 @@
-# Quiz — Anatomía de una clase Java
+# Quiz - Sesión 02 - Anatomía de una clase Java
 
 ## 1. Firma de método
 

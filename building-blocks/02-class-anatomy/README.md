@@ -1,4 +1,4 @@
-# Video 2 — Anatomía de una clase Java
+# Sesión 02 - Anatomía de una clase Java
 
 ## Pregunta guía
 
@@ -6,7 +6,7 @@
 
 ## Objetivos
 
-Al terminar este episodio deberíamos poder:
+Al terminar esta sesión deberíamos poder:
 
 - distinguir archivo fuente, unidad de compilación, tipo top-level y clase;
 - reconocer campos, métodos y otros elementos del cuerpo de una clase;
@@ -19,9 +19,9 @@ Al terminar este episodio deberíamos poder:
 
 ## Video
 
-Este material acompaña al episodio **02 — Anatomía de una clase Java** de la serie *Java 21 a Fondo*.
+Este material acompaña a la sesión **02 - Anatomía de una clase Java** de la serie *Java 21 a Fondo*.
 
-▶️ [Ver el episodio en YouTube](https://youtu.be/dQbYMbKBAww)
+▶️ [Ver el video en YouTube](https://youtu.be/dQbYMbKBAww)
 
 ## Material
 
